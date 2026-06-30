@@ -1,0 +1,37 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { type Language } from '../../i18n/translations';
+
+const lang = 'zh' as Language;
+---
+
+<Layout title="隐私政策 - [studio] larevalot" lang={lang}>
+  <section class="relative py-24 md:py-36 overflow-hidden">
+    <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-olive-500/40 to-transparent"></div>
+    <div class="absolute inset-0 pointer-events-none overflow-hidden">
+      <div class="absolute top-1/4 left-1/4 w-[400px] h-[400px] rounded-full bg-gradient-to-br from-olive-500/6 to-olive-400/3 blur-[100px] animate-float"></div>
+    </div>
+    <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <svg class="w-16 h-16 mx-auto mb-6 text-olive-500 dark:text-olive-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" /></svg>
+        <h1 class="font-black text-4xl sm:text-5xl md:text-6xl mb-6"><span class="bg-gradient-to-r from-olive-700 dark:from-olive-200 via-olive-600 dark:via-olive-100 to-olive-500 dark:to-olive-300 bg-clip-text text-transparent">隐私政策</span></h1>
+        <p class="text-light-text/60 dark:text-dark-text-600 font-light">最后更新：2025年1月</p>
+      </div>
+      <div class="space-y-8">
+        <div class="p-8 rounded-2xl bg-light-card/60 dark:bg-dark-card/60 backdrop-blur-xl border border-light-border/30 dark:border-dark-border/30">
+          <h2 class="font-bold text-2xl text-light-text dark:text-dark-text mb-4">1. 我们收集的信息</h2>
+          <p class="text-light-text/70 dark:text-dark-text/70 leading-relaxed mb-4">在 [studio] larevalot，我们收集提供服务所需的最少信息。</p>
+          <ul class="list-disc list-inside space-y-2 text-light-text/70 dark:text-dark-text/70"><li>用于账户创建和通信的电子邮件地址</li><li>通过我们的支付提供商安全处理的支付信息</li><li>用于改进服务的使用数据</li></ul>
+        </div>
+        <div class="p-8 rounded-2xl bg-light-card/60 dark:bg-dark-card/60 backdrop-blur-xl border border-light-border/30 dark:border-dark-border/30">
+          <h2 class="font-bold text-2xl text-light-text dark:text-dark-text mb-4">2. 我们如何使用您的信息</h2>
+          <p class="text-light-text/70 dark:text-dark-text/70 leading-relaxed">我们仅使用您的信息来提供和改进我们的服务、处理交易以及与您沟通更新和支持。</p>
+        </div>
+        <div class="p-8 rounded-2xl bg-light-card/60 dark:bg-dark-card/60 backdrop-blur-xl border border-light-border/30 dark:border-dark-border/30">
+          <h2 class="font-bold text-2xl text-light-text dark:text-dark-text mb-4">3. 数据安全</h2>
+          <p class="text-light-text/70 dark:text-dark-text/70 leading-relaxed">我们实施行业标准的安全措施来保护您的个人信息。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

@@ -1,0 +1,37 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { type Language } from '../../i18n/translations';
+
+const lang = 'it' as Language;
+---
+
+<Layout title="Informativa sulla Privacy - [studio] larevalot" lang={lang}>
+  <section class="relative py-24 md:py-36 overflow-hidden">
+    <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-olive-500/40 to-transparent"></div>
+    <div class="absolute inset-0 pointer-events-none overflow-hidden">
+      <div class="absolute top-1/4 left-1/4 w-[400px] h-[400px] rounded-full bg-gradient-to-br from-olive-500/6 to-olive-400/3 blur-[100px] animate-float"></div>
+    </div>
+    <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <svg class="w-16 h-16 mx-auto mb-6 text-olive-500 dark:text-olive-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" /></svg>
+        <h1 class="font-black text-4xl sm:text-5xl md:text-6xl mb-6"><span class="bg-gradient-to-r from-olive-700 dark:from-olive-200 via-olive-600 dark:via-olive-100 to-olive-500 dark:to-olive-300 bg-clip-text text-transparent">Informativa sulla Privacy</span></h1>
+        <p class="text-light-text/60 dark:text-dark-text-600 font-light">Ultimo aggiornamento: Gennaio 2025</p>
+      </div>
+      <div class="space-y-8">
+        <div class="p-8 rounded-2xl bg-light-card/60 dark:bg-dark-card/60 backdrop-blur-xl border border-light-border/30 dark:border-dark-border/30">
+          <h2 class="font-bold text-2xl text-light-text dark:text-dark-text mb-4">1. Informazioni che Raccogliamo</h2>
+          <p class="text-light-text/70 dark:text-dark-text/70 leading-relaxed mb-4">In [studio] larevalot, raccogliamo le informazioni minime necessarie per fornire i nostri servizi.</p>
+          <ul class="list-disc list-inside space-y-2 text-light-text/70 dark:text-dark-text/70"><li>Indirizzo email per la creazione dell'account</li><li>Informazioni di pagamento elaborate in modo sicuro</li><li>Dati di utilizzo per migliorare i nostri servizi</li></ul>
+        </div>
+        <div class="p-8 rounded-2xl bg-light-card/60 dark:bg-dark-card/60 backdrop-blur-xl border border-light-border/30 dark:border-dark-border/30">
+          <h2 class="font-bold text-2xl text-light-text dark:text-dark-text mb-4">2. Come Usiamo le Tue Informazioni</h2>
+          <p class="text-light-text/70 dark:text-dark-text/70 leading-relaxed">Utilizziamo le tue informazioni esclusivamente per fornire e migliorare i nostri servizi, elaborare le transazioni e comunicare con te.</p>
+        </div>
+        <div class="p-8 rounded-2xl bg-light-card/60 dark:bg-dark-card/60 backdrop-blur-xl border border-light-border/30 dark:border-dark-border/30">
+          <h2 class="font-bold text-2xl text-light-text dark:text-dark-text mb-4">3. Sicurezza dei Dati</h2>
+          <p class="text-light-text/70 dark:text-dark-text/70 leading-relaxed">Implementiamo misure di sicurezza standard del settore per proteggere le tue informazioni personali.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

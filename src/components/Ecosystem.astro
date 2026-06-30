@@ -1,0 +1,283 @@
+---
+import { type Language, useTranslations } from '../i18n/translations';
+
+interface Props {
+  lang: Language;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+const families = [
+  {
+    nameKey: 'ecosystem.family.lareweb.name',
+    tag: '[web]',
+    descKey: 'ecosystem.family.lareweb.desc',
+    tools: [
+      {
+        tag: '[c]',
+        nameKey: 'ecosystem.tool.confesiones.name',
+        descKey: 'ecosystem.tool.confesiones.desc',
+        url: 'https://clare-web-ivory.vercel.app/',
+        status: 'live',
+        icon: `<svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+        </svg>`,
+      },
+      {
+        tag: '[p]',
+        nameKey: 'ecosystem.tool.portfolio.name',
+        descKey: 'ecosystem.tool.portfolio.desc',
+        url: 'https://laredev.vercel.app/',
+        status: 'live',
+        icon: `<svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+        </svg>`,
+      },
+    ],
+  },
+  {
+    nameKey: 'ecosystem.family.lareditor.name',
+    tag: '[edit]',
+    descKey: 'ecosystem.family.lareditor.desc',
+    tools: [
+      {
+        tag: '[v]',
+        nameKey: 'ecosystem.tool.video.name',
+        descKey: 'ecosystem.tool.video.desc',
+        url: 'https://lareditor.vercel.app/',
+        status: 'live',
+        icon: `<svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+        </svg>`,
+      },
+      {
+        tag: '[img]',
+        nameKey: 'ecosystem.tool.image.name',
+        descKey: 'ecosystem.tool.image.desc',
+        url: '#',
+        status: 'coming',
+        icon: `<svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+        </svg>`,
+      },
+    ],
+  },
+];
+---
+
+<section id="ecosystem" class="relative py-24 md:py-36 overflow-hidden">
+  <!-- Section decoration -->
+  <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-olive-500/40 to-transparent"></div>
+
+  <!-- Neural network background -->
+  <div class="absolute inset-0 pointer-events-none overflow-hidden">
+    <!-- Animated orbs -->
+    <div class="absolute top-1/4 left-1/4 w-[400px] h-[400px] rounded-full 
+      bg-gradient-to-br from-olive-500/6 to-olive-400/3 blur-[100px] animate-float"></div>
+    <div class="absolute bottom-1/4 right-1/4 w-[350px] h-[350px] rounded-full 
+      bg-gradient-to-br from-olive-400/5 to-olive-300/3 blur-[80px] animate-float" 
+      style="animation-delay: 3s;"></div>
+
+    <!-- Neural grid -->
+    <svg class="absolute inset-0 w-full h-full opacity-[0.04]" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <pattern id="neural-grid" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse">
+          <circle cx="50" cy="50" r="1.5" fill="#959e54" />
+          <circle cx="0" cy="0" r="1" fill="#959e54" />
+          <circle cx="100" cy="0" r="1" fill="#959e54" />
+          <circle cx="0" cy="100" r="1" fill="#959e54" />
+          <circle cx="100" cy="100" r="1" fill="#959e54" />
+          <line x1="50" y1="50" x2="0" y2="0" stroke="#959e54" stroke-width="0.3" />
+          <line x1="50" y1="50" x2="100" y2="0" stroke="#959e54" stroke-width="0.3" />
+          <line x1="50" y1="50" x2="0" y2="100" stroke="#959e54" stroke-width="0.3" />
+          <line x1="50" y1="50" x2="100" y2="100" stroke="#959e54" stroke-width="0.3" />
+        </pattern>
+      </defs>
+      <rect width="100%" height="100%" fill="url(#neural-grid)" />
+    </svg>
+
+    <!-- Floating particles -->
+    <div class="absolute top-1/3 left-1/5 w-1.5 h-1.5 bg-olive-400/30 rounded-full animate-float" style="animation-delay: 1s;"></div>
+    <div class="absolute top-1/2 right-1/4 w-1 h-1 bg-olive-300/25 rounded-full animate-float" style="animation-delay: 2s;"></div>
+    <div class="absolute bottom-1/3 left-1/3 w-2 h-2 bg-olive-500/20 rounded-full animate-float" style="animation-delay: 4s;"></div>
+    <div class="absolute top-2/3 right-1/3 w-1 h-1 bg-olive-400/30 rounded-full animate-float" style="animation-delay: 5s;"></div>
+  </div>
+
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <!-- Section header -->
+    <div class="text-center mb-20 md:mb-28">
+      <div class="inline-flex items-center justify-center mb-8">
+        <svg class="w-12 h-12 text-olive-500 dark:text-olive-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+        </svg>
+      </div>
+
+      <h2 class="font-black text-4xl sm:text-5xl md:text-6xl lg:text-7xl mb-8 leading-tight">
+        <span class="bg-gradient-to-r from-olive-700 dark:from-olive-200 via-olive-600 dark:via-olive-100 to-olive-500 dark:to-olive-300 
+          bg-clip-text text-transparent">
+          {t('ecosystem.title')}
+        </span>
+      </h2>
+
+      <p class="max-w-2xl mx-auto text-lg md:text-xl text-light-text/50 dark:text-dark-text/50 font-light tracking-wide">
+        {t('ecosystem.subtitle')}
+      </p>
+    </div>
+
+    <!-- Neural Network Visualization -->
+    <div class="relative">
+      <!-- Connection lines (desktop only) -->
+      <div class="hidden lg:block absolute inset-0 pointer-events-none">
+        <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+          <line x1="25%" y1="50%" x2="75%" y2="50%" 
+            stroke="url(#connection-gradient)" stroke-width="1" stroke-dasharray="4 4" opacity="0.3">
+            <animate attributeName="stroke-dashoffset" from="0" to="-8" dur="2s" repeatCount="indefinite" />
+          </line>
+          <line x1="25%" y1="30%" x2="25%" y2="70%" 
+            stroke="url(#connection-gradient)" stroke-width="1" stroke-dasharray="4 4" opacity="0.2">
+            <animate attributeName="stroke-dashoffset" from="0" to="-8" dur="3s" repeatCount="indefinite" />
+          </line>
+          <line x1="75%" y1="30%" x2="75%" y2="70%" 
+            stroke="url(#connection-gradient)" stroke-width="1" stroke-dasharray="4 4" opacity="0.2">
+            <animate attributeName="stroke-dashoffset" from="0" to="-8" dur="3s" repeatCount="indefinite" />
+          </line>
+          <line x1="25%" y1="30%" x2="75%" y2="70%" 
+            stroke="url(#connection-gradient)" stroke-width="0.5" stroke-dasharray="2 6" opacity="0.15">
+            <animate attributeName="stroke-dashoffset" from="0" to="-8" dur="4s" repeatCount="indefinite" />
+          </line>
+          <line x1="25%" y1="70%" x2="75%" y2="30%" 
+            stroke="url(#connection-gradient)" stroke-width="0.5" stroke-dasharray="2 6" opacity="0.15">
+            <animate attributeName="stroke-dashoffset" from="0" to="-8" dur="4s" repeatCount="indefinite" />
+          </line>
+          <defs>
+            <linearGradient id="connection-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#959e54" stop-opacity="0.6" />
+              <stop offset="50%" stop-color="#767e40" stop-opacity="0.3" />
+              <stop offset="100%" stop-color="#959e54" stop-opacity="0.6" />
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+
+      <!-- Families grid -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
+        {families.map((family, familyIndex) => (
+          <div class="relative animate-[slideUp_0.6s_ease-out]" style={`animation-delay: ${familyIndex * 0.2}s;`}>
+            <!-- Family node -->
+            <div class="relative mb-8">
+              <div class="flex items-center justify-center">
+                <div class="relative">
+                  <div class="absolute inset-0 rounded-full bg-olive-500/10 animate-ping" style={`animation-duration: ${3 + familyIndex}s;`}></div>
+                  <div class="absolute inset-[-8px] rounded-full border border-olive-500/20 animate-pulse"></div>
+                  <div class="w-20 h-20 rounded-full bg-gradient-to-br from-olive-500 to-olive-700 
+                    flex items-center justify-center shadow-xl shadow-olive-500/30
+                    relative z-10">
+                    <span class="font-bold text-white text-lg tracking-wider">{family.tag}</span>
+                  </div>
+                  <div class="absolute inset-0 rounded-full bg-olive-400/20 blur-xl"></div>
+                </div>
+              </div>
+              
+              <div class="text-center mt-5">
+                <h3 class="font-black text-2xl md:text-3xl text-light-text dark:text-dark-text mb-2">
+                  {t(family.nameKey)}
+                </h3>
+                <p class="text-sm text-light-text/40 dark:text-dark-text/40 font-light tracking-wide">
+                  {t(family.descKey)}
+                </p>
+              </div>
+            </div>
+
+            <!-- Tools nodes -->
+            <div class="space-y-6">
+              {family.tools.map((tool, toolIndex) => (
+                <div class="group relative">
+                  <div class="hidden lg:block absolute left-1/2 -top-8 w-px h-8 bg-gradient-to-b from-olive-500/30 to-transparent"></div>
+                  
+                  <div class="relative p-6 rounded-2xl overflow-hidden
+                    bg-light-card/50 dark:bg-dark-card/50 backdrop-blur-xl
+                    border border-light-border/30 dark:border-dark-border/30
+                    hover:border-olive-500/40 transition-all duration-500
+                    hover:shadow-[0_0_30px_rgba(149,158,84,0.1)]
+                    transform hover:-translate-y-1">
+                    
+                    <div class="absolute top-4 left-4">
+                      <div class="w-3 h-3 rounded-full bg-olive-500/60 group-hover:bg-olive-400 
+                        group-hover:shadow-[0_0_8px_rgba(149,158,84,0.6)] transition-all duration-300"></div>
+                    </div>
+
+                    <div class="ml-6">
+                      <div class="flex items-start justify-between mb-4">
+                        <div class="flex items-center gap-4">
+                          <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-olive-500/20 to-olive-600/20 
+                            border border-olive-500/20 flex items-center justify-center
+                            group-hover:from-olive-500/30 group-hover:to-olive-600/30 transition-all duration-300">
+                            <div class="text-olive-500 dark:text-olive-400" set:html={tool.icon} />
+                          </div>
+                          <div>
+                            <div class="text-xs font-semibold text-olive-500/60 dark:text-olive-400/60 mb-1 tracking-wider">
+                              {tool.tag}
+                            </div>
+                            <h4 class="font-bold text-lg text-light-text dark:text-dark-text 
+                              group-hover:text-olive-700 dark:group-hover:text-olive-200 transition-colors duration-300">
+                              {t(tool.nameKey)}
+                            </h4>
+                          </div>
+                        </div>
+
+                        <div class:list={[
+                          'px-3 py-1.5 rounded-lg text-xs font-bold uppercase tracking-wider',
+                          tool.status === 'live'
+                            ? 'bg-olive-500/10 text-olive-600 dark:text-olive-400 border border-olive-500/20'
+                            : 'bg-olive-400/10 text-olive-500 dark:text-olive-300 border border-olive-400/20',
+                        ]}>
+                          {tool.status === 'live' ? t('ecosystem.live') : t('ecosystem.coming.soon')}
+                        </div>
+                      </div>
+
+                      <p class="text-sm text-light-text/50 dark:text-dark-text/50 font-light leading-relaxed mb-5">
+                        {t(tool.descKey)}
+                      </p>
+
+                      {tool.status === 'live' ? (
+                        <a
+                          href={tool.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl
+                            bg-olive-500/10 border border-olive-500/20
+                            hover:bg-olive-500/20 hover:border-olive-500/40
+                            hover:shadow-[0_0_15px_rgba(149,158,84,0.15)]
+                            text-olive-700 dark:text-olive-300
+                            font-semibold text-xs uppercase tracking-wider
+                            transition-all duration-300 group/btn"
+                        >
+                          {t('ecosystem.explore')}
+                          <svg class="w-3.5 h-3.5 transform group-hover/btn:translate-x-1 transition-transform duration-300" 
+                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                          </svg>
+                        </a>
+                      ) : (
+                        <div class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl
+                          bg-light-bg/30 dark:bg-dark-bg/30 border border-light-border/30 dark:border-dark-border/30
+                          text-light-text/30 dark:text-dark-text/30
+                          font-semibold text-xs uppercase tracking-wider">
+                          <svg class="w-3.5 h-3.5 animate-pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                          </svg>
+                          {t('ecosystem.coming.soon')}
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,219 @@
+---
+import { type Language, useTranslations } from '../i18n/translations';
+
+interface Props {
+  lang: Language;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<section id="pricing" class="relative py-24 md:py-36 overflow-hidden">
+  <!-- Section decoration with glow -->
+  <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-olive-500/40 to-transparent"></div>
+  <div class="absolute top-0 left-1/2 -translate-x-1/2 w-64 h-32 bg-olive-500/10 blur-[80px] rounded-full"></div>
+
+  <!-- Animated background orbs -->
+  <div class="absolute top-1/4 right-0 w-[500px] h-[500px] rounded-full 
+    bg-gradient-to-br from-olive-500/8 to-olive-600/4 blur-[120px] animate-float"></div>
+  <div class="absolute bottom-1/4 left-0 w-[400px] h-[400px] rounded-full 
+    bg-gradient-to-br from-olive-400/6 to-olive-300/3 blur-[100px] animate-float" 
+    style="animation-delay: 2s;"></div>
+
+  <!-- Background grid -->
+  <div class="absolute inset-0 opacity-[0.02] pointer-events-none"
+    style="background-image: 
+      linear-gradient(rgba(149,158,84,0.3) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(149,158,84,0.3) 1px, transparent 1px);
+      background-size: 100px 100px;">
+  </div>
+
+  <!-- Floating particles -->
+  <div class="absolute inset-0 pointer-events-none overflow-hidden">
+    <div class="absolute top-1/3 left-1/4 w-1 h-1 bg-olive-400/30 rounded-full animate-float" style="animation-delay: 1s;"></div>
+    <div class="absolute top-2/3 right-1/3 w-1.5 h-1.5 bg-olive-300/20 rounded-full animate-float" style="animation-delay: 3s;"></div>
+    <div class="absolute bottom-1/3 right-1/4 w-1 h-1 bg-olive-500/25 rounded-full animate-float" style="animation-delay: 5s;"></div>
+  </div>
+
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <!-- Section header -->
+    <div class="text-center mb-20 md:mb-28">
+      <div class="inline-flex items-center justify-center mb-8">
+        <svg class="w-12 h-12 text-olive-500 dark:text-olive-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+      </div>
+
+      <h2 class="font-black text-4xl sm:text-5xl md:text-6xl lg:text-7xl mb-8 leading-tight">
+        <span class="bg-gradient-to-r from-olive-700 dark:from-olive-200 via-olive-600 dark:via-olive-100 to-olive-500 dark:to-olive-300 
+          bg-clip-text text-transparent">
+          {t('pricing.title')}
+        </span>
+      </h2>
+
+      <p class="max-w-2xl mx-auto text-lg md:text-xl text-light-text/50 dark:text-dark-text/50 font-light tracking-wide">
+        {t('pricing.subtitle')}
+      </p>
+    </div>
+
+    <!-- Pricing Card -->
+    <div class="flex justify-center">
+      <div class="w-full max-w-lg animate-[slideUp_0.6s_ease-out]">
+        <div class="group relative">
+          <!-- Card with glass morphism -->
+          <div class="relative p-10 md:p-12 rounded-3xl overflow-hidden
+            bg-light-card/60 dark:bg-dark-card/60 backdrop-blur-xl
+            border-2 border-olive-500/30
+            hover:border-olive-400/50 transition-all duration-700
+            hover:shadow-[0_0_60px_rgba(149,158,84,0.2)]">
+
+            <!-- Top accent line with glow -->
+            <div class="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-olive-400 via-olive-500 to-olive-400"></div>
+            <div class="absolute top-0 left-0 right-0 h-20 bg-gradient-to-b from-olive-500/10 blur-xl"></div>
+
+            <!-- Animated gradient overlay -->
+            <div class="absolute inset-0 bg-gradient-to-br from-olive-500/0 to-olive-400/0
+              group-hover:from-olive-500/5 group-hover:to-olive-400/5 
+              transition-all duration-700"></div>
+
+            <!-- Content -->
+            <div class="relative z-10">
+              <!-- Badge -->
+              <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full mb-8
+                bg-olive-500/15 border border-olive-500/25">
+                <svg class="w-4 h-4 text-olive-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+                <span class="text-xs font-bold uppercase tracking-wider text-olive-500 dark:text-olive-300">
+                  {t('pricing.lifetime')}
+                </span>
+              </div>
+
+              <!-- Price -->
+              <div class="mb-10">
+                <div class="flex items-baseline gap-2 mb-2">
+                  <span class="font-black text-6xl md:text-7xl bg-gradient-to-b from-olive-600 dark:from-olive-200 to-olive-800 dark:to-olive-400 
+                    bg-clip-text text-transparent">
+                    $5
+                  </span>
+                  <span class="text-xl text-light-text/40 dark:text-dark-text/40 font-light">USD</span>
+                </div>
+                <p class="text-sm text-light-text/40 dark:text-dark-text/40 font-light tracking-wide">
+                  {t('pricing.one.time')} · {t('pricing.no.sub')}
+                </p>
+              </div>
+
+              <!-- Features -->
+              <div class="space-y-5 mb-10">
+                <div class="flex items-center gap-4">
+                  <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-olive-500 to-olive-600 flex items-center justify-center flex-shrink-0
+                    shadow-lg shadow-olive-500/25">
+                    <svg class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h4 class="font-bold text-light-text dark:text-dark-text">Video Editor</h4>
+                    <p class="text-sm text-light-text/50 dark:text-dark-text/50 font-light">Professional editing tools</p>
+                  </div>
+                </div>
+
+                <div class="flex items-center gap-4">
+                  <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-olive-400 to-olive-500 flex items-center justify-center flex-shrink-0
+                    shadow-lg shadow-olive-500/25">
+                    <svg class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h4 class="font-bold text-light-text dark:text-dark-text">Photo Editor</h4>
+                    <p class="text-sm text-light-text/50 dark:text-dark-text/50 font-light">Advanced image manipulation</p>
+                  </div>
+                </div>
+
+                <div class="flex items-center gap-4">
+                  <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-olive-300 to-olive-400 flex items-center justify-center flex-shrink-0
+                    shadow-lg shadow-olive-500/25">
+                    <svg class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h4 class="font-bold text-light-text dark:text-dark-text">AI Integrations</h4>
+                    <p class="text-sm text-light-text/50 dark:text-dark-text/50 font-light">Smart AI-powered features</p>
+                  </div>
+                </div>
+
+                <div class="h-px bg-gradient-to-r from-transparent via-olive-500/20 to-transparent my-6"></div>
+
+                <div class="flex items-center gap-4">
+                  <div class="w-10 h-10 rounded-xl bg-olive-500/10 border border-olive-500/20 flex items-center justify-center flex-shrink-0">
+                    <svg class="w-5 h-5 text-olive-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h4 class="font-bold text-light-text dark:text-dark-text">All Future Updates</h4>
+                    <p class="text-sm text-light-text/50 dark:text-dark-text/50 font-light">Included forever</p>
+                  </div>
+                </div>
+
+                <div class="flex items-center gap-4">
+                  <div class="w-10 h-10 rounded-xl bg-olive-500/10 border border-olive-500/20 flex items-center justify-center flex-shrink-0">
+                    <svg class="w-5 h-5 text-olive-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h4 class="font-bold text-light-text dark:text-dark-text">Priority Support</h4>
+                    <p class="text-sm text-light-text/50 dark:text-dark-text/50 font-light">Direct assistance</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- CTA Button -->
+              <button
+                class="w-full group/btn relative px-12 py-5 rounded-2xl overflow-hidden
+                  font-bold text-base uppercase tracking-[0.15em]
+                  transition-all duration-500 hover:scale-[1.03] hover:shadow-[0_0_50px_rgba(149,158,84,0.3)]"
+              >
+                <div class="absolute inset-0 bg-gradient-to-r from-olive-600 via-olive-500 to-olive-600 
+                  group-hover/btn:from-olive-500 group-hover/btn:via-olive-400 group-hover/btn:to-olive-500 
+                  transition-all duration-500"></div>
+                <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent
+                  translate-x-[-200%] group-hover/btn:translate-x-[200%] transition-transform duration-1000 ease-in-out"></div>
+                <div class="absolute inset-0 rounded-2xl border border-olive-400/50 
+                  group-hover/btn:border-olive-300/80 transition-colors duration-300
+                  shadow-[inset_0_1px_0_rgba(255,255,255,0.15),0_0_15px_rgba(149,158,84,0.2)]"></div>
+                <span class="relative text-white flex items-center justify-center gap-3">
+                  {t('pricing.get.access')}
+                  <svg class="w-5 h-5 transform group-hover/btn:translate-x-1.5 transition-transform duration-300" 
+                    fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                  </svg>
+                </span>
+              </button>
+
+              <!-- Guarantee -->
+              <p class="text-center text-xs text-light-text/30 dark:text-dark-text/30 mt-6 font-light">
+                Secure payment · Instant access
+              </p>
+            </div>
+
+            <!-- Decorative corner -->
+            <div class="absolute bottom-0 right-0 w-40 h-40 opacity-[0.03] group-hover:opacity-[0.08] 
+              transition-opacity duration-700">
+              <svg viewBox="0 0 100 100" fill="none" class="w-full h-full">
+                <circle cx="80" cy="80" r="60" stroke="currentColor" stroke-width="0.3" class="text-olive-400" />
+                <circle cx="80" cy="80" r="45" stroke="currentColor" stroke-width="0.3" class="text-olive-500" />
+                <circle cx="80" cy="80" r="30" stroke="currentColor" stroke-width="0.3" class="text-olive-600" />
+                <circle cx="80" cy="80" r="15" stroke="currentColor" stroke-width="0.3" class="text-olive-400" />
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,15 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Hero from '../../components/Hero.astro';
+import Ecosystem from '../../components/Ecosystem.astro';
+import Pricing from '../../components/Pricing.astro';
+import { type Language } from '../../i18n/translations';
+
+const lang = 'es' as Language;
+---
+
+<Layout title="[studio] larevalot - Ecosistema de Herramientas de Desarrollo Premium" lang={lang}>
+  <Hero lang={lang} />
+  <Ecosystem lang={lang} />
+  <Pricing lang={lang} />
+</Layout>

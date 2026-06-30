@@ -1,0 +1,275 @@
+---
+import { type Language, useTranslations, languages, defaultLang } from '../i18n/translations';
+
+interface Props {
+  lang: Language;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+const navLinks = [
+  { href: `/${lang === defaultLang ? '' : lang}`, label: t('nav.home') },
+  { href: `/${lang === defaultLang ? '' : lang}#ecosystem`, label: t('nav.ecosystem') },
+  { href: `/${lang === defaultLang ? '' : lang}#pricing`, label: t('nav.pricing') },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<header id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-700">
+  <!-- Top accent line with glow -->
+  <div class="h-[2px] bg-gradient-to-r from-transparent via-olive-500 to-transparent shadow-[0_0_10px_rgba(149,158,84,0.5)]"></div>
+
+  <nav class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-20">
+
+      <!-- Logo -->
+      <a href={`/${lang === defaultLang ? '' : lang}`} class="flex items-center gap-3 group">
+        <span class="font-bold text-lg sm:text-xl tracking-[0.15em]
+          bg-gradient-to-r from-olive-600 dark:from-olive-200 via-olive-500 dark:via-olive-100 to-olive-400 dark:to-olive-300 
+          bg-clip-text text-transparent group-hover:from-olive-500 dark:group-hover:from-olive-300 group-hover:to-olive-300 dark:group-hover:to-olive-200
+          transition-all duration-500">
+          [studio] larevalot
+        </span>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <div class="hidden md:flex items-center gap-1">
+        {navLinks.map((link) => (
+          <a
+            href={link.href}
+            class:list={[
+              'px-5 py-2.5 rounded-xl font-semibold text-sm uppercase tracking-[0.1em]',
+              'transition-all duration-500 relative overflow-hidden group',
+              currentPath === link.href
+                ? 'text-olive-700 dark:text-olive-200 bg-olive-500/15 shadow-[0_0_15px_rgba(149,158,84,0.1)]'
+                : 'text-light-text/60 dark:text-dark-text/60 hover:text-olive-600 dark:hover:text-olive-300',
+            ]}
+          >
+            <span class="relative z-10">{link.label}</span>
+            <div class:list={[
+              'absolute inset-0 bg-gradient-to-r from-olive-500/10 via-olive-400/5 to-transparent',
+              'transform transition-transform duration-500',
+              currentPath === link.href ? 'translate-x-0' : '-translate-x-full group-hover:translate-x-0',
+            ]}></div>
+            {currentPath === link.href && (
+              <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-8 h-0.5 bg-gradient-to-r from-olive-400 to-olive-300 rounded-full"></div>
+            )}
+          </a>
+        ))}
+      </div>
+
+      <!-- Right Controls -->
+      <div class="flex items-center gap-3">
+
+        <!-- Language Switcher -->
+        <div class="relative" id="lang-switcher">
+          <button
+            id="lang-button"
+            class="flex items-center gap-2 px-3.5 py-2 rounded-xl
+              bg-light-card/40 dark:bg-dark-card/40 backdrop-blur-xl
+              border border-light-border/50 dark:border-dark-border/50
+              hover:border-olive-500/40 hover:shadow-[0_0_15px_rgba(149,158,84,0.1)]
+              transition-all duration-500
+              font-semibold text-sm"
+            aria-label="Switch language"
+          >
+            <svg class="w-4 h-4 text-olive-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
+            </svg>
+            <span class="uppercase tracking-wider">{lang}</span>
+            <svg class="w-3 h-3 transition-transform duration-500" id="lang-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+
+          <!-- Dropdown -->
+          <div
+            id="lang-dropdown"
+            class="absolute right-0 top-full mt-3 w-44 py-2 rounded-2xl
+              bg-light-card/95 dark:bg-dark-card/95 backdrop-blur-2xl
+              border border-light-border/50 dark:border-dark-border/50
+              shadow-[0_0_30px_rgba(149,158,84,0.1)]
+              transform scale-95 opacity-0 pointer-events-none
+              transition-all duration-500 origin-top-right"
+          >
+            {Object.entries(languages).map(([code, name]) => (
+              <a
+                href={`/${code === defaultLang ? '' : code}${currentPath.includes('pricing') ? '/pricing' : ''}`}
+                class:list={[
+                  'block px-5 py-3 font-medium text-sm',
+                  'transition-all duration-300 flex items-center gap-3',
+                  code === lang
+                    ? 'text-olive-600 dark:text-olive-300 bg-olive-500/10'
+                    : 'text-light-text/60 dark:text-dark-text/60 hover:text-olive-600 dark:hover:text-olive-300 hover:bg-olive-500/5',
+                ]}
+              >
+                <span class:list={[
+                  'w-2 h-2 rounded-full transition-all duration-300',
+                  code === lang ? 'bg-olive-500 shadow-[0_0_6px_rgba(149,158,84,0.6)]' : 'bg-transparent',
+                ]}></span>
+                {name}
+              </a>
+            ))}
+          </div>
+        </div>
+
+        <!-- Theme Toggle -->
+        <button
+          id="theme-toggle"
+          class="w-11 h-11 rounded-xl flex items-center justify-center
+            bg-light-card/40 dark:bg-dark-card/40 backdrop-blur-xl
+            border border-light-border/50 dark:border-dark-border/50
+            hover:border-olive-500/40 hover:shadow-[0_0_15px_rgba(149,158,84,0.1)]
+            transition-all duration-500
+            group"
+          aria-label="Toggle theme"
+        >
+          <!-- Sun icon -->
+          <svg class="w-5 h-5 text-olive-400 hidden dark:block transition-all duration-500
+            group-hover:rotate-180 group-hover:scale-110" 
+            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+              d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+          </svg>
+          <!-- Moon icon -->
+          <svg class="w-5 h-5 text-olive-500 block dark:hidden transition-all duration-500
+            group-hover:-rotate-12 group-hover:scale-110" 
+            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+              d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+          </svg>
+        </button>
+
+        <!-- Mobile Menu Button -->
+        <button
+          id="mobile-menu-button"
+          class="md:hidden w-11 h-11 rounded-xl flex items-center justify-center
+            bg-light-card/40 dark:bg-dark-card/40 backdrop-blur-xl
+            border border-light-border/50 dark:border-dark-border/50
+            hover:border-olive-500/40 transition-all duration-500"
+          aria-label="Toggle menu"
+        >
+          <svg class="w-5 h-5 transition-all duration-500" id="menu-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div
+      id="mobile-menu"
+      class="md:hidden overflow-hidden transition-all duration-700 max-h-0"
+    >
+      <div class="py-4 space-y-2 border-t border-light-border/30 dark:border-dark-border/30">
+        {navLinks.map((link) => (
+          <a
+            href={link.href}
+            class:list={[
+              'block px-5 py-3.5 rounded-xl font-semibold text-sm uppercase tracking-[0.1em]',
+              'transition-all duration-500',
+              currentPath === link.href
+                ? 'text-olive-600 dark:text-olive-300 bg-olive-500/15 shadow-[0_0_10px_rgba(149,158,84,0.1)]'
+                : 'text-light-text/60 dark:text-dark-text/60 hover:text-olive-600 dark:hover:text-olive-300',
+            ]}
+          >
+            {link.label}
+          </a>
+        ))}
+      </div>
+    </div>
+  </nav>
+</header>
+
+<!-- Spacer -->
+<div class="h-20"></div>
+
+<script>
+  // Navbar scroll effect
+  const navbar = document.getElementById('navbar');
+  let lastScroll = 0;
+
+  window.addEventListener('scroll', () => {
+    const currentScroll = window.scrollY;
+
+    if (currentScroll > 50) {
+      navbar?.classList.add(
+        'bg-light-bg/80', 'dark:bg-dark-bg/80',
+        'backdrop-blur-2xl',
+        'shadow-[0_0_30px_rgba(149,158,84,0.05)]',
+        'border-b', 'border-light-border/30', 'dark:border-dark-border/30'
+      );
+    } else {
+      navbar?.classList.remove(
+        'bg-light-bg/80', 'dark:bg-dark-bg/80',
+        'backdrop-blur-2xl',
+        'shadow-[0_0_30px_rgba(149,158,84,0.05)]',
+        'border-b', 'border-light-border/30', 'dark:border-dark-border/30'
+      );
+    }
+
+    lastScroll = currentScroll;
+  });
+
+  // Language dropdown
+  const langButton = document.getElementById('lang-button');
+  const langDropdown = document.getElementById('lang-dropdown');
+  const langArrow = document.getElementById('lang-arrow');
+  let isLangOpen = false;
+
+  langButton?.addEventListener('click', () => {
+    isLangOpen = !isLangOpen;
+    if (isLangOpen) {
+      langDropdown?.classList.remove('scale-95', 'opacity-0', 'pointer-events-none');
+      langDropdown?.classList.add('scale-100', 'opacity-100', 'pointer-events-auto');
+      langArrow?.classList.add('rotate-180');
+    } else {
+      langDropdown?.classList.add('scale-95', 'opacity-0', 'pointer-events-none');
+      langDropdown?.classList.remove('scale-100', 'opacity-100', 'pointer-events-auto');
+      langArrow?.classList.remove('rotate-180');
+    }
+  });
+
+  // Close dropdown when clicking outside
+  document.addEventListener('click', (e) => {
+    const target = e.target as HTMLElement;
+    if (!target.closest('#lang-switcher')) {
+      isLangOpen = false;
+      langDropdown?.classList.add('scale-95', 'opacity-0', 'pointer-events-none');
+      langDropdown?.classList.remove('scale-100', 'opacity-100', 'pointer-events-auto');
+      langArrow?.classList.remove('rotate-180');
+    }
+  });
+
+  // Theme toggle
+  const themeToggle = document.getElementById('theme-toggle');
+  themeToggle?.addEventListener('click', () => {
+    const html = document.documentElement;
+    const isDark = html.classList.contains('dark');
+    const newTheme = isDark ? 'light' : 'dark';
+
+    html.classList.remove('light', 'dark');
+    html.classList.add(newTheme);
+    localStorage.setItem('theme', newTheme);
+  });
+
+  // Mobile menu
+  const mobileMenuButton = document.getElementById('mobile-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const menuIcon = document.getElementById('menu-icon');
+  let isMobileMenuOpen = false;
+
+  mobileMenuButton?.addEventListener('click', () => {
+    isMobileMenuOpen = !isMobileMenuOpen;
+    if (isMobileMenuOpen) {
+      mobileMenu?.style.setProperty('max-height', mobileMenu.scrollHeight + 'px');
+      menuIcon?.classList.add('rotate-90');
+    } else {
+      mobileMenu?.style.setProperty('max-height', '0');
+      menuIcon?.classList.remove('rotate-90');
+    }
+  });
+</script>

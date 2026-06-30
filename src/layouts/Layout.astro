@@ -1,0 +1,155 @@
+---
+import '../styles/global.css';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import { type Language, defaultLang } from '../i18n/translations';
+
+interface Props {
+  title: string;
+  lang?: Language;
+}
+
+const { title, lang = defaultLang } = Astro.props;
+---
+
+<!doctype html>
+<html lang={lang} class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="[studio] larevalot - Premium Development Tools Ecosystem" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Silkscreen&display=swap" rel="stylesheet">
+  </head>
+  <body class="min-h-screen transition-colors duration-700
+    bg-light-bg dark:bg-dark-bg
+    text-light-text dark:text-dark-text
+    font-['Montserrat',sans-serif]
+    selection:bg-olive-500/30 selection:text-inherit">
+
+    <!-- Background Effects -->
+    <div class="fixed inset-0 pointer-events-none overflow-hidden">
+      <!-- Futuristic Grid Pattern -->
+      <div class="absolute inset-0 opacity-[0.03] dark:opacity-[0.05]"
+        style="background-image: 
+          linear-gradient(rgba(149,158,84,0.4) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(149,158,84,0.4) 1px, transparent 1px);
+          background-size: 60px 60px;">
+      </div>
+
+      <!-- Gradient Orbs with enhanced glow -->
+      <div class="absolute top-0 left-1/4 w-[700px] h-[700px] rounded-full
+        bg-gradient-to-br from-olive-500/15 to-olive-600/5 dark:from-olive-500/8 dark:to-olive-600/3 blur-[150px] animate-pulse-slow">
+      </div>
+      <div class="absolute bottom-0 right-1/4 w-[600px] h-[600px] rounded-full
+        bg-gradient-to-br from-olive-400/12 to-olive-500/8 dark:from-olive-400/6 dark:to-olive-500/4 blur-[120px] animate-pulse-slow"
+        style="animation-delay: 1.5s;">
+      </div>
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
+        w-[900px] h-[900px] rounded-full
+        bg-gradient-to-br from-olive-400/8 to-olive-300/4 dark:from-olive-400/4 dark:to-olive-300/2 blur-[180px]">
+      </div>
+
+      <!-- Floating particles -->
+      <div class="absolute top-1/4 left-1/5 w-1 h-1 bg-olive-400/20 rounded-full animate-float" style="animation-delay: 2s;"></div>
+      <div class="absolute top-1/3 right-1/4 w-1.5 h-1.5 bg-olive-300/15 rounded-full animate-float" style="animation-delay: 3s;"></div>
+      <div class="absolute bottom-1/3 left-1/3 w-1 h-1 bg-olive-400/20 rounded-full animate-float" style="animation-delay: 4s;"></div>
+    </div>
+
+    <!-- Scanlines Effect -->
+    <div class="fixed inset-0 pointer-events-none opacity-[0.015] dark:opacity-[0.03]"
+      style="background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(149,158,84,0.08) 2px,
+        rgba(149,158,84,0.08) 4px
+      );">
+    </div>
+
+    <!-- Noise texture overlay -->
+    <div class="fixed inset-0 pointer-events-none opacity-[0.02] dark:opacity-[0.04]"
+      style="background-image: url('data:image/svg+xml,%3Csvg viewBox=%220 0 256 256%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noise%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.9%22 numOctaves=%224%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noise)%22 opacity=%220.5%22/%3E%3C/svg%3E');">
+    </div>
+
+    <Navbar lang={lang} />
+
+    <main class="relative z-10">
+      <slot />
+    </main>
+
+    <Footer lang={lang} />
+
+    <!-- Theme Toggle Script -->
+    <script>
+      function getTheme() {
+        if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+          return localStorage.getItem('theme');
+        }
+        return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      }
+
+      function setTheme(theme: string) {
+        const root = document.documentElement;
+        root.classList.remove('light', 'dark');
+        root.classList.add(theme);
+        localStorage.setItem('theme', theme);
+      }
+
+      // Set initial theme
+      setTheme(getTheme() || 'dark');
+
+      // Listen for theme changes
+      document.addEventListener('astro:after-swap', () => {
+        setTheme(getTheme() || 'dark');
+      });
+    </script>
+  </body>
+</html>
+
+<style is:global>
+  /* Smooth page transitions */
+  @view-transition {
+    navigation: auto;
+  }
+
+  /* Custom scrollbar for the whole page */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgba(149, 158, 84, 0.25);
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(149, 158, 84, 0.45);
+  }
+
+  /* Selection color */
+  ::selection {
+    background: rgba(149, 158, 84, 0.3);
+    color: inherit;
+  }
+
+  /* Smooth scroll */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Focus styles */
+  :focus-visible {
+    outline: 2px solid rgba(149, 158, 84, 0.5);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+</style>
