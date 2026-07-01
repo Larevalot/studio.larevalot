@@ -31,6 +31,7 @@ export const translations: Record<Language, Record<string, string>> = {
     'ecosystem.visit': 'Visit',
     'ecosystem.coming.soon': 'Coming Soon',
     'ecosystem.live': 'Live',
+    'ecosystem.maintenance': 'Under Maintenance',
     'ecosystem.explore': 'Explore',
     'ecosystem.neural.badge': 'Neural Network',
     'ecosystem.neural.subtitle': 'Interconnected tools forming a creative neural network. Each node enhances the others.',
@@ -70,6 +71,7 @@ export const translations: Record<Language, Record<string, string>> = {
     'pricing.no.sub': 'No Subscription Required',
     'pricing.get.access': 'Get Access',
     'pricing.popular': 'Most Popular',
+    'pricing.coming.soon': 'Coming Soon',
 
     // Pricing Cards
     'pricing.lareditor.v.name': '[v] larEditor',
@@ -119,6 +121,7 @@ export const translations: Record<Language, Record<string, string>> = {
     'ecosystem.visit': 'Visitar',
     'ecosystem.coming.soon': 'Próximamente',
     'ecosystem.live': 'En Vivo',
+    'ecosystem.maintenance': 'En Mantenimiento',
     'ecosystem.explore': 'Explorar',
     'ecosystem.neural.badge': 'Red Neuronal',
     'ecosystem.neural.subtitle': 'Herramientas interconectadas formando una red neuronal creativa. Cada nodo potencia a los demás.',
@@ -158,6 +161,7 @@ export const translations: Record<Language, Record<string, string>> = {
     'pricing.no.sub': 'Sin Suscripción Requerida',
     'pricing.get.access': 'Obtener Acceso',
     'pricing.popular': 'Más Popular',
+    'pricing.coming.soon': 'Próximamente',
 
     // Pricing Cards
     'pricing.lareditor.v.name': '[v] larEditor',
@@ -207,6 +211,7 @@ export const translations: Record<Language, Record<string, string>> = {
     'ecosystem.visit': 'Visita',
     'ecosystem.coming.soon': 'Prossimamente',
     'ecosystem.live': 'Attivo',
+    'ecosystem.maintenance': 'In Manutenzione',
     'ecosystem.explore': 'Esplora',
     'ecosystem.neural.badge': 'Rete Neurale',
     'ecosystem.neural.subtitle': 'Strumenti interconnessi che formano una rete neurale creativa. Ogni nodo potenzia gli altri.',
@@ -244,8 +249,9 @@ export const translations: Record<Language, Record<string, string>> = {
     'pricing.one.time': 'Pagamento Unico',
     'pricing.lifetime': 'Accesso a Vita',
     'pricing.no.sub': 'Nessun Abbonamento Richiesto',
-    'pricing.get.access': 'Ottieni l\'Accesso',
+    'pricing.get.access': "Ottieni l'Accesso",
     'pricing.popular': 'Più Popolare',
+    'pricing.coming.soon': 'Prossimamente',
 
     // Pricing Cards
     'pricing.lareditor.v.name': '[v] larEditor',
@@ -295,6 +301,7 @@ export const translations: Record<Language, Record<string, string>> = {
     'ecosystem.visit': '访问',
     'ecosystem.coming.soon': '即将推出',
     'ecosystem.live': '已上线',
+    'ecosystem.maintenance': '维护中',
     'ecosystem.explore': '探索',
     'ecosystem.neural.badge': '神经网络',
     'ecosystem.neural.subtitle': '互连的工具形成创意神经网络。每个节点都增强其他节点。',
@@ -334,6 +341,7 @@ export const translations: Record<Language, Record<string, string>> = {
     'pricing.no.sub': '无需订阅',
     'pricing.get.access': '获取访问权限',
     'pricing.popular': '最受欢迎',
+    'pricing.coming.soon': '即将推出',
 
     // Pricing Cards
     'pricing.lareditor.v.name': '[v] larEditor',
